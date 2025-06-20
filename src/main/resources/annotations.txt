@@ -1,0 +1,27 @@
+@Configuration для создания классов с конфигурацией приложения
+@Bean для создания и конфигурации бинов
+
+@Bean
+public DataSource dataSource(){
+return new DriverManagerSource("jdbc:h2:mem:development", "sa", "");
+}
+
+@ComponentScan (basePackages = "de.ait....") какие пакеты необходимо сканировать для автомотического обнаружения @Controller, @Repository....
+
+@Value для внедрения значания из конфигурационного файла application.properties ({max.tax.value=5.0)
+@Value("${max.tax.value}")
+private double maxTaxvalue;
+
+@Autowired для автоматического внедрения зависимости
+
+@Profile для запуска конфигурации для определенных профилей
+@Configuration
+@Profile("dev")
+
+@Bean
+@ConditionalOnProperty (name = "database.enabled", havingValue = "true") --> создает бин если выполняются определенные значения в файле конфигурации (database.enabled=true)
+
+@Configuration
+@EnableConfigurationProperties (ServerConfigProperties.class) регистрирует класс конфигурации, если он не помечен как компонент
+
+
